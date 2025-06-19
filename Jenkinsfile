@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage('Get Host IP') {
+            steps {
+                sh "hostname -I"
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t fastapi-image .'
